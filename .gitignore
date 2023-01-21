@@ -1,0 +1,6 @@
+node_modules
+.elasticbeanstalk/
+./public/yc.css.map
+./public/yc.scss
+.env
+.git

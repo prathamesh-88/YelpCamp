@@ -1,0 +1,48 @@
+@import "./variables";
+
+.navbar{
+    background-color: $secondary-color;
+    border-color: $secondary-color;
+    height: 6vh;
+    .nav > li > a{
+        color:$black;
+    }
+    .navbar-brand{
+        color:$black;
+    }
+
+    .navbar-options{
+        display: flex;
+        flex-direction: row;
+        .list-element{
+            margin-left: 1rem;
+            a{
+                text-decoration: none;
+            }
+        }
+    }
+}
+
+
+li.list-group-item.active{
+    background-color: $secondary-color;
+    border-color: $gray;
+    &:hover{
+        background-color: $secondary-color;
+        border-color: $gray;
+    }
+}
+
+li.list-group-item{
+    border-color: $gray;
+    &:hover{
+        background-color: $secondary-color;
+        color:#eeeeee;
+    }
+    
+}
+
+.flash{
+    margin-top: 1rem;
+}
+

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <!-- Start VWO Async SmartCode -->
+    <script type='text/javascript'>
+    window._vwo_code = window._vwo_code || (function(){
+    var account_id=628719,
+    settings_tolerance=2000,
+    library_tolerance=2500,
+    use_existing_jquery=false,
+    is_spa=1,
+    hide_element='body',
+    
+    /* DO NOT EDIT BELOW THIS LINE */
+    f=false,d=document,code={use_existing_jquery:function(){return use_existing_jquery;},library_tolerance:function(){return library_tolerance;},finish:function(){if(!f){f=true;var a=d.getElementById('_vis_opt_path_hides');if(a)a.parentNode.removeChild(a);}},finished:function(){return f;},load:function(a){var b=d.createElement('script');b.src=a;b.type='text/javascript';b.innerText;b.onerror=function(){_vwo_code.finish();};d.getElementsByTagName('head')[0].appendChild(b);},init:function(){
+    window.settings_timer=setTimeout(function () {_vwo_code.finish() },settings_tolerance);var a=d.createElement('style'),b=hide_element?hide_element+'{opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important;}':'',h=d.getElementsByTagName('head')[0];a.setAttribute('id','_vis_opt_path_hides');a.setAttribute('type','text/css');if(a.styleSheet)a.styleSheet.cssText=b;else a.appendChild(d.createTextNode(b));h.appendChild(a);this.load('https://dev.visualwebsiteoptimizer.com/j.php?a='+account_id+'&u='+encodeURIComponent(d.URL)+'&f='+(+is_spa)+'&r='+Math.random());return settings_timer; }};window._vwo_settings_timer = code.init(); return code; }());
+    </script>
+    <!-- End VWO Async SmartCode -->
+    <title>YelpCamp</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="/yc.css">
+    <body>
+    <div class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/campground">YelpCamp</a>
+            </div>
+
+                <ul class="nav navbar-nav navbar-right navbar-options">
+                <% if(!currentUser){ %>
+                    <li class="list-element"><a href="/login">Login | </a></li>
+                    <li class="list-element"><a href="/register">Sign in</a></li>
+                <% }else{ %>
+                    <li class="list-element"><a>Currently signed in as: <%= currentUser.username %> | </a></li>
+                    <li class="list-element"><a href="/logout">Logout</a></li>
+                <% } %>
+                </ul>
+
+        </div>
+    </div>
+    <div class="container flash">
+        <% if(error && error.length > 0){ %>
+            <div class="alert alert-danger" role="alert"> <%= error %> </div>
+        <% } else if(success && success.length > 0){ %>
+            <div class="alert alert-success" role="alert"> <%= success %> </div>
+        <% } %>
+    </div>
+   
+
+
+
+   

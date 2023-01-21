@@ -1,0 +1,63 @@
+<%- include ("../partials/header.ejs") %>
+<div class="show-container container">
+    <div class="row">
+        <div class="col col-md-3">
+            <ul class="list-group">
+                <li class="list-group-item">Price:<b> Rs. 9,000/Night</b> </li>
+                <li class="list-group-item"><b>Location</b></li>
+                <li class="list-group-item map"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d403240.00362347346!2d-119.83129877051555!3d37.85297715687083!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8096f09df58aecc5%3A0x2d249c2ced8003fe!2sYosemite%20National%20Park!5e0!3m2!1sen!2sin!4v1648291816248!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></li>
+
+            </ul>
+        </div>
+        <div class="col col-md-9">
+            <div class="thumbnail">
+                <img src="<%= campground.image%>" class="img-responsive">
+                <div class="caption">
+                    <h4 class="pull-right"></h4>
+                    <h4><%=campground.name %></h4>
+                    <p class="description"><%=campground.description %></p>
+                    <p class="text-right"><em>Uploaded by <%= campground.owner.username %></em></p>
+                    <% if(currentUser && campground.owner.id.equals(currentUser._id)){ %>
+                    <a href="/campground/<%= campground._id %>/edit" class="btn btn-md btn-warning">Edit</a>
+                    <form action="/campground/<%=campground._id %>?_method=DELETE" class="delete-form" method="POST">
+                         <button class="btn btn-md btn-danger">Delete</button>
+                    </form>
+                <% } %>
+                </div>
+                
+            </div>
+            <div class="comment-section">
+                <div class="text-right">
+                    <a href= "/campground/<%= campground._id %>/comment/new" class="btn btn-md btn-success" >Add Comment</a>
+                </div>
+                <hr>
+                <% campground.comments.forEach( comment =>{ %>
+                    <div class="row">
+                        <div class="col col-md-12 card comment">
+                            <div class="header">
+                                <a><strong> <%= comment.owner.username %> </strong> </a>
+                            </div>
+                            <p><%= comment.comment %></p>
+
+                            <% if(currentUser && comment.owner.id.equals(currentUser._id)){ %>
+                                <div class="button-set">
+                                    <a href="/campground/<%= campground._id %>/comment/<%=comment._id %>/edit"><button class="comment-edit" >+ Edit</button></a>
+                                    
+                                    <form method="POST" class="delete-form"
+                                        action="/campground/<%= campground._id %>/comment/<%=comment._id %>?_method=DELETE" >
+                                        <button class="comment-delete">+ Delete</button>
+                                    </form>
+                                </div>
+                            <% } %>
+                      
+                        </div>
+                    </div>
+                <% }) %>                    
+            </div>
+        </div>
+    </div>   
+
+</div>
+
+
+<%- include ("../partials/footer.ejs") %>
